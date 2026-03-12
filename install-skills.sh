@@ -6,7 +6,7 @@
 set -e
 
 # 配置
-SKILLS_REPO="https://github.com/openyida/yida-skills.git"
+SKILLS_REPO="https://gh-proxy.org/https://github.com/openyida/yida-skills.git"
 SKILLS_REPO_SSH="git@github.com:openyida/yida-skills.git"
 SKILLS_BRANCH="main"
 CLAUDE_DIR=".claude"
