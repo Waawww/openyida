@@ -64,6 +64,16 @@ def browser_fetch_json(page, url):
     return json.loads(payload["text"])
 
 
+def goto_with_fallback(page, url, timeout=90000):
+    # Some entry pages keep long-running requests alive, so networkidle can hang.
+    try:
+        page.goto(url, wait_until="domcontentloaded", timeout=timeout)
+        page.wait_for_load_state("load", timeout=min(timeout, 30000))
+    except Exception:
+        page.goto(url, wait_until="commit", timeout=timeout)
+    page.wait_for_timeout(2000)
+
+
 def fetch_app_list(page):
     apps = []
     page_index = 1
@@ -355,13 +365,13 @@ def discover(app_type=None, interactive=False):
         context.add_cookies(cookie_data.get("cookies", []))
         page = context.new_page()
 
-        page.goto(base_url + "/myApp", wait_until="networkidle", timeout=90000)
+        goto_with_fallback(page, base_url + "/myApp", timeout=90000)
         apps = fetch_app_list(page)
         app_meta = choose_app_interactively(page, apps) if interactive else ensure_app_exists(apps, app_type)
         app_type = app_meta["appType"]
 
-        page.goto(f"{base_url}/{app_type}/admin", wait_until="domcontentloaded", timeout=90000)
-        page.wait_for_timeout(5000)
+        goto_with_fallback(page, f"{base_url}/{app_type}/admin", timeout=90000)
+        page.wait_for_timeout(3000)
         final_url = page.url
         body_text = page.locator("body").inner_text(timeout=10000)
         if "error.htm" in final_url or "应用不存在" in body_text:
