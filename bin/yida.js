@@ -356,13 +356,19 @@ async function main() {
     case 'publish': {
       // 参数顺序：<源文件路径> <appType> <formUuid>
       // publish.js 内部读取顺序：argv[2]=appType, argv[3]=formUuid, argv[4]=sourceFile
-      if (args.length < 3) {
+      const skipLint = args.includes('--skip-lint');
+      const filteredArgs = args.filter(arg => arg !== '--skip-lint');
+      if (filteredArgs.length < 3) {
         console.error(t('cli.publish_usage'));
         console.error(t('cli.publish_example'));
         process.exit(1);
       }
-      const [sourceFile, appType, formUuid] = args;
-      process.argv = [process.argv[0], process.argv[1], appType, formUuid, sourceFile];
+      const [sourceFile, appType, formUuid] = filteredArgs;
+      process.argv = [
+        process.argv[0], process.argv[1],
+        appType, formUuid, sourceFile,
+        ...(skipLint ? ['--skip-lint'] : [])
+      ];
       require('../lib/app/publish');
       break;
     }
