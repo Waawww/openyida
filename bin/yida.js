@@ -385,7 +385,8 @@ async function main() {
         appType, formUuid, sourceFile,
         ...(skipLint ? ['--skip-lint'] : [])
       ];
-      require('../lib/app/publish');
+      const publishMain = require('../lib/app/publish');
+      await publishMain();
       break;
     }
 
