@@ -613,6 +613,7 @@ async function main() {
 
     case 'integration': {
       const subCommand = args[0];
+      const subArgs = args.slice(1);  // 路由层消费 subCommand，传递剩余参数
 
       if (!subCommand || subCommand === '--help' || subCommand === '-h') {
         console.error(t('cli.integration_help'));
@@ -621,7 +622,7 @@ async function main() {
 
       if (subCommand === 'create') {
         const { run: runIntegration } = require('../lib/integration/integration-create');
-        await runIntegration(args);
+        await runIntegration(subArgs);
       } else {
         console.error(t('cli.integration_unknown', subCommand));
         console.error(t('cli.integration_help_hint'));
