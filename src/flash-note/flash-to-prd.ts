@@ -21,8 +21,8 @@ import {
   findProjectRoot,
   httpPost,
   requestWithAutoLogin,
-} from '../core/utils';
-import { t } from '../core/i18n';
+} from '../../lib/core/utils';
+import { t } from '../../lib/core/i18n';
 import type {
   AuthRef,
   YidaApiResponse,
