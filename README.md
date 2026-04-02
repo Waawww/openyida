@@ -31,6 +31,15 @@ npm install -g openyida
 
 **Zero config, works out of the box.** After installation, just chat in Claude Code / OpenCode / Aone Copilot:
 
+### 悟空（Wukong）安装方式
+
+悟空通过技能包手动安装，无需 npm：
+
+1. 前往 [GitHub Releases](https://github.com/openyida/openyida/tags) 下载最新技能包（`.zip`）
+2. 打开悟空 → **技能中心** → **上传技能**，选择下载的技能包即可
+
+
+
 ```
 Build me an IPD system on Yida to manage the full chip production workflow
 Help me set up a CRM
