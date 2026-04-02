@@ -31,12 +31,12 @@ npm install -g openyida
 
 **Zero config, works out of the box.** After installation, just chat in Claude Code / OpenCode / Aone Copilot:
 
-### 悟空（Wukong）安装方式
+### Wukong Installation
 
-悟空通过技能包手动安装，无需 npm：
+Wukong uses manual skill package installation instead of npm:
 
-1. 前往 [GitHub Releases](https://github.com/openyida/openyida/tags) 下载最新技能包（`.zip`）
-2. 打开悟空 → **技能中心** → **上传技能**，选择下载的技能包即可
+1. Download the latest skill package (`.zip`) from [GitHub Releases](https://github.com/openyida/openyida/tags)
+2. Open Wukong → **Skill Center** → **Upload Skill**, then select the downloaded package
 
 
 
