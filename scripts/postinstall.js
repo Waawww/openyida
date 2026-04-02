@@ -132,13 +132,8 @@ safeExec(() => {
   }
 });
 
-// ── 2. Wukong integration ─────────────────────────────────────────────
-
-safeExec(() => {
-  if (fs.existsSync(path.join(HOME_DIR, '.real'))) {
-    installSkills(path.join(HOME_DIR, '.real'));
-  }
-});
+// ── 2. Wukong ────────────────────────────────────────────────────────
+// 悟空通过手动上传技能，无需 postinstall 安装。
 
 // ── 3. 首次安装欢迎引导 ──────────────────────────────────────────────
 
