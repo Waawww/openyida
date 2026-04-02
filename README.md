@@ -35,7 +35,7 @@ npm install -g openyida
 
 Wukong uses manual skill package installation instead of npm:
 
-1. Download the latest skill package (`.zip`) from [GitHub Releases](https://github.com/openyida/openyida/tags)
+1. Download the latest skill package (`.zip`) from [GitHub Releases](https://github.com/openyida/openyida/releases)
 2. Open Wukong → **Skill Center** → **Upload Skill**, then select the downloaded package
 
 
