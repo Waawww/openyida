@@ -74,7 +74,7 @@ jobs:
         node -e "
           const fs = require('fs');
           let content = fs.readFileSync('yida-skills/SKILL.md', 'utf8');
-          content = content.replace(/^(metadata:\s*\n\s*version:\s*)(.+)$/m, '\$1$VERSION');
+          content = content.replace(/^(\s*version:\s*)([^\n]+)/m, '\$1$VERSION');
           fs.writeFileSync('yida-skills/SKILL.md', content);
           console.log('Updated SKILL.md version to $VERSION');
         "
