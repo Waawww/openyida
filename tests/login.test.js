@@ -281,11 +281,11 @@ describe('findProjectRoot 环境检测', () => {
     fs.rmSync(testDir, { recursive: true, force: true });
   });
 
-  test('悟空环境下返回 AGENT_WORK_ROOT/project', () => {
-    // AGENT_WORK_ROOT 必须包含 .real，才能触发悟空检测分支
-    const agentWorkRoot = path.join(os.tmpdir(), `.real`, `users`, `user-test-${Date.now()}`, `workspace`);
+  test('悟空环境下返回 AGENT_WORK_ROOT/workspace/project', () => {
+    // AGENT_WORK_ROOT 指向 ~/.real/users/user-{uuid}/，workspace 在其下
+    const agentWorkRoot = path.join(os.tmpdir(), `.real`, `users`, `user-test-${Date.now()}`);
     process.env.AGENT_WORK_ROOT = agentWorkRoot;
-    const wukongProject = path.join(agentWorkRoot, 'project');
+    const wukongProject = path.join(agentWorkRoot, 'workspace', 'project');
 
     fs.mkdirSync(wukongProject, { recursive: true });
     dirsToCleanup.push(path.join(os.tmpdir(), '.real'));

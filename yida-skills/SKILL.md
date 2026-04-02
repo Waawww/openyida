@@ -30,10 +30,10 @@ metadata:
 ## ⚡ 首要步骤（每次必须先执行）
 
 ```bash
-# 1. 确保 openyida 已安装（未安装则自动安装）
+# 1. 确保 openyida 已安装（未安装则自动安装，已安装则跳过）
 openyida -v 2>/dev/null || npm install -g openyida@latest
 
-# 2. 一键诊断并自动修复：版本升级 + 环境检测 + project 目录初始化
+# 2. 一键诊断并自动修复：环境检测 + project 目录初始化
 openyida doctor --fix
 ```
 
