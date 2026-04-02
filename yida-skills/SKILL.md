@@ -4,7 +4,7 @@ description: >
   宜搭低代码平台 AI 开发入口。一句话生成完整应用：创建应用、表单设计、自定义页面、流程配置、数据管理。
   当用户提到"宜搭"、"yida"、"低代码"、"创建应用"、"创建表单"、"发布页面"、"搭建"、"系统"、"应用"时触发。
 metadata:
-  version: 2026-03-30
+  version: 2026.03.30
 ---
 
 # 宜搭 AI 应用开发指南
@@ -30,10 +30,21 @@ metadata:
 ## ⚡ 首要步骤（每次必须先执行）
 
 ```bash
-# 1. 检测 AI 工具环境和登录态
+# 1. 检测 openyida 是否已安装且版本匹配，否则安装/升级到最新版
+# 注意：将下方 <SKILL_VERSION> 替换为本文件 frontmatter 中 metadata.version 的值
+INSTALLED_VERSION=$(openyida -v 2>/dev/null)
+if [ -z "$INSTALLED_VERSION" ]; then
+  echo "openyida 未安装，正在安装..."
+  npm install -g openyida@latest
+elif [ "$INSTALLED_VERSION" != "<SKILL_VERSION>" ]; then
+  echo "版本不匹配（当前: $INSTALLED_VERSION，期望: <SKILL_VERSION>），正在升级..."
+  npm install -g openyida@latest
+fi
+
+# 2. 检测 AI 工具环境和登录态
 openyida env
 
-# 2. 确认 project/ 目录存在，不存在则初始化
+# 3. 确认 project/ 目录存在，不存在则初始化
 openyida copy
 ```
 
