@@ -160,4 +160,3 @@ openyida/
 ### 调试登录问题
 - 检查 `lib/login.js` 中的 Cookie 缓存逻辑
 - 使用 `openyida env` 确认当前环境检测是否正确
-- 悟空环境使用 CDP 协议，其他环境使用扫码登录
