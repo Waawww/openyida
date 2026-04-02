@@ -142,7 +142,7 @@ jobs:
           下载 `yida-skills.zip` 可手动解压到项目目录使用，或通过以下命令自动安装：
 
           ```bash
-          openyida copy
+          openyida copy -skills
           ```
 
         generate_release_notes: true
